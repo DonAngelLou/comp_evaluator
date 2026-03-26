@@ -1,0 +1,1 @@
+"""Investment evaluation application package."""

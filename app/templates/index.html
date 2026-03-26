@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Investment Evaluator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <header class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">AI-Assisted Equity Research</span>
+          <h1>Evaluate a company like an investor, not a search box.</h1>
+          <p>
+            Enter a company name and website. The app gathers public evidence, checks relevance,
+            and assembles a grounded investment report with upside scenarios.
+          </p>
+        </div>
+        <div class="hero-chip">FastAPI + Grok</div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <div class="panel-header">
+            <h2>Run Evaluation</h2>
+            <p>Use the company’s main website to help the identity filter stay precise.</p>
+          </div>
+
+          <form id="evaluation-form" class="evaluation-form">
+            <label class="field">
+              <span>Company Name</span>
+              <input
+                id="company_name"
+                name="company_name"
+                type="text"
+                placeholder="NVIDIA Corporation"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span>Company Website</span>
+              <input
+                id="website"
+                name="website"
+                type="url"
+                placeholder="https://www.nvidia.com"
+                required
+              />
+            </label>
+
+            <button id="submit-button" type="submit" class="primary-button">
+              Generate Report
+            </button>
+          </form>
+
+          <div class="status-box" id="status-box">
+            <span class="status-label">Ready</span>
+            <p>Submit a company to generate a report.</p>
+          </div>
+        </section>
+
+        <section class="panel results-panel">
+          <div class="panel-header">
+            <h2>Evaluation Report</h2>
+            <p>The report appears here and updates in place after each run.</p>
+          </div>
+
+          <div id="empty-state" class="empty-state">
+            <div class="empty-icon">01</div>
+            <h3>No report yet</h3>
+            <p>
+              Start with a public company and its official site. The report will render directly on
+              this page.
+            </p>
+          </div>
+
+          <div id="report-view" class="report-view hidden">
+            <div class="hero-metrics">
+              <div class="metric-card">
+                <span class="metric-label">Company</span>
+                <strong id="metric-company">-</strong>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Verdict</span>
+                <strong id="metric-verdict">-</strong>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Overall Score</span>
+                <strong id="metric-score">-</strong>
+              </div>
+              <div class="metric-card">
+                <span class="metric-label">Identity Confidence</span>
+                <strong id="metric-confidence">-</strong>
+              </div>
+            </div>
+
+            <div class="report-grid">
+              <article class="report-card">
+                <h3>Snapshot</h3>
+                <ul id="snapshot-list" class="data-list"></ul>
+              </article>
+
+              <article class="report-card">
+                <h3>Projection</h3>
+                <ul id="projection-list" class="data-list"></ul>
+              </article>
+            </div>
+
+            <article class="report-card">
+              <h3>Recent Activity</h3>
+              <div id="activity-list" class="stack-list"></div>
+            </article>
+
+            <article class="report-card">
+              <h3>Risks</h3>
+              <div id="risk-list" class="pill-list"></div>
+            </article>
+
+            <article class="report-card prose-card">
+              <h3>Full Report</h3>
+              <div id="report-html"></div>
+            </article>
+
+            <article class="report-card">
+              <h3>Citations</h3>
+              <div id="citation-list" class="stack-list citations"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+  </html>
