@@ -254,9 +254,3 @@ The tests cover:
 - browser UI route availability
 - same-name filtering behavior
 - private-company fallback behavior
-
-## Notes
-
-- If `XAI_API_KEY` is missing, the app still runs using heuristic fallback logic.
-- If `XAI_API_KEY` is invalid, the app falls back instead of crashing.
-- Current facts are retrieved from public sources; Grok is used for structured interpretation, not as the source of truth.
